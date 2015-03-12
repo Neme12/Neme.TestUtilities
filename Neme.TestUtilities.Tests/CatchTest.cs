@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Neme.UnitTestUtilities.Tests
+namespace Neme.TestUtilities.Tests
 {
     [TestClass]
     public class CatchTest : ExceptionTest
@@ -35,7 +35,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void CatchAnything_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Catch.Anything(null));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Catch.Anything(null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);
@@ -44,7 +44,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void CatchException_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Catch.Exception<Exception>(null));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Catch.Exception<Exception>(null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);

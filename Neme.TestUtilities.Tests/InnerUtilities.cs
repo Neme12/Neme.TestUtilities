@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neme.UnitTestUtilities.Tests
+namespace Neme.TestUtilities.Tests
 {
-    static class TestUtilities
+    static class InnerUtilities
     {
         public static T Catch<T>(Action action) where T : Exception
         {

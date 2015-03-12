@@ -1,15 +1,15 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neme.UnitTestUtilities.Exceptions;
+using Neme.TestUtilities.Exceptions;
 
-namespace Neme.UnitTestUtilities.Tests
+namespace Neme.TestUtilities.Tests
 {
     [TestClass]
     public class ThrowsTest : ExceptionTest
     {
         private void AssertDoesNotThrowAnything(Action action)
         {
-            var caught = TestUtilities.Catch<ThrowsAnythingFailed>(() => Throws.Anything(action));
+            var caught = InnerUtilities.Catch<ThrowsAnythingFailed>(() => Throws.Anything(action));
 
             Assert.IsNotNull(caught);
             Assert.IsNull(caught.InnerException);
@@ -17,7 +17,7 @@ namespace Neme.UnitTestUtilities.Tests
 
         private void AssertDoesNotThrowException<T>(Action action, Exception actual) where T : Exception
         {
-            var caught = TestUtilities.Catch<ThrowsExceptionFailed>(() => Throws.Exception<T>(action));
+            var caught = InnerUtilities.Catch<ThrowsExceptionFailed>(() => Throws.Exception<T>(action));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual(typeof(T), caught.ExpectedException);
@@ -26,7 +26,7 @@ namespace Neme.UnitTestUtilities.Tests
 
         private void AssertDoesNotThrowArgumentNullException(Action action, Exception actual)
         {
-            var caught = TestUtilities.Catch<ThrowsExceptionFailed>(() => Throws.ArgumentNullException(action, null));
+            var caught = InnerUtilities.Catch<ThrowsExceptionFailed>(() => Throws.ArgumentNullException(action, null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual(typeof(ArgumentNullException), caught.ExpectedException);
@@ -35,7 +35,7 @@ namespace Neme.UnitTestUtilities.Tests
 
         private void AssertDoesNotThrowExceptionOrDerived<T>(Action action, Exception actual) where T : Exception
         {
-            var caught = TestUtilities.Catch<ThrowsExceptionOrDerivedFailed>(() => Throws.ExceptionOrDerived<T>(action));
+            var caught = InnerUtilities.Catch<ThrowsExceptionOrDerivedFailed>(() => Throws.ExceptionOrDerived<T>(action));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual(typeof(T), caught.ExpectedException);
@@ -65,7 +65,7 @@ namespace Neme.UnitTestUtilities.Tests
 
         private void AssertThrowsArgumentNullExceptionAndPropertyFails(Action action, string expectedParamName, string actualParamName, Exception expected)
         {
-            var caught = TestUtilities.Catch<ExceptionAssertionFailed>(() => Throws.ArgumentNullException(action, expectedParamName));
+            var caught = InnerUtilities.Catch<ExceptionAssertionFailed>(() => Throws.ArgumentNullException(action, expectedParamName));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual(expected, caught.InnerException);
@@ -84,7 +84,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void ThrowsAnything_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Throws.Anything(null));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Throws.Anything(null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);
@@ -93,7 +93,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void ThrowsException_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Throws.Exception<Exception>(null));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Throws.Exception<Exception>(null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);
@@ -102,7 +102,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void ThrowsExceptionOrDerived_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Throws.ExceptionOrDerived<Exception>(null));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Throws.ExceptionOrDerived<Exception>(null));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);
@@ -111,7 +111,7 @@ namespace Neme.UnitTestUtilities.Tests
         [TestMethod]
         public void ThrowsArgumentNullException_NullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() => Throws.ArgumentNullException(null, "ParamName"));
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() => Throws.ArgumentNullException(null, "ParamName"));
 
             Assert.IsNotNull(caught);
             Assert.AreEqual("action", caught.ParamName);

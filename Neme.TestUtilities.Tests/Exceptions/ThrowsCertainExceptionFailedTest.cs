@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neme.UnitTestUtilities.Exceptions;
 
-namespace Neme.UnitTestUtilities.Tests.Exceptions
+namespace Neme.TestUtilities.Exceptions.Tests
 {
     public abstract class ThrowsCertainExceptionFailedTest
     {

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neme.UnitTestUtilities.Exceptions
+namespace Neme.TestUtilities.Exceptions
 {
     public abstract class ThrowsFailed : Exception
     {

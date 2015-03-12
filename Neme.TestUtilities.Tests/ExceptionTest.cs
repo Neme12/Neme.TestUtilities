@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Neme.UnitTestUtilities.Tests
+namespace Neme.TestUtilities.Tests
 {
     public abstract class ExceptionTest
     {

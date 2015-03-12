@@ -1,9 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neme.UnitTestUtilities;
-using Neme.UnitTestUtilities.Exceptions;
 
-namespace Neme.UnitTestUtilities.Tests.Exceptions
+namespace Neme.TestUtilities.Exceptions.Tests
 {
     [TestClass]
     public class ThrowsAnythingFailedTest

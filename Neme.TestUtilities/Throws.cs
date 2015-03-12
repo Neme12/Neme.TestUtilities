@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Neme.UnitTestUtilities.Exceptions;
+using Neme.TestUtilities.Exceptions;
 
-namespace Neme.UnitTestUtilities
+namespace Neme.TestUtilities
 {
     public static class Throws
     {

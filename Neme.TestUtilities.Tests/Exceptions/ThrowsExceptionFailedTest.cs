@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neme.UnitTestUtilities;
-using Neme.UnitTestUtilities.Exceptions;
+using Neme.TestUtilities.Tests;
 
-namespace Neme.UnitTestUtilities.Tests.Exceptions
+namespace Neme.TestUtilities.Exceptions.Tests
 {
     [TestClass]
     public class ThrowsExceptionFailedTest : ThrowsCertainExceptionFailedTest
@@ -53,11 +52,11 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void CreateWithExpectedExceptionNullThrows()
         {
-            var e1 = TestUtilities.Catch<ArgumentNullException>(() => { new ThrowsExceptionFailed(null); });
+            var e1 = InnerUtilities.Catch<ArgumentNullException>(() => { new ThrowsExceptionFailed(null); });
             Assert.IsNotNull(e1);
             Assert.AreEqual("expectedException", e1.ParamName);
 
-            var e2 = TestUtilities.Catch<ArgumentNullException>(() => { new ThrowsExceptionFailed(null, null); });
+            var e2 = InnerUtilities.Catch<ArgumentNullException>(() => { new ThrowsExceptionFailed(null, null); });
             Assert.IsNotNull(e2);
             Assert.AreEqual("expectedException", e2.ParamName);
         }
@@ -65,11 +64,11 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void CreateWithWrongExpectedTypeThrows()
         {
-            var e1 = TestUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(object)); });
+            var e1 = InnerUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(object)); });
             Assert.IsNotNull(e1);
             Assert.AreEqual("expectedException", e1.ParamName);
 
-            var e2 = TestUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(int), null); });
+            var e2 = InnerUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(int), null); });
             Assert.IsNotNull(e2);
             Assert.AreEqual("expectedException", e2.ParamName);
         }
@@ -77,11 +76,11 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void CreateWithActualSameAsExpectedThrows()
         {
-            var e1 = TestUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(Exception), new Exception()); });
+            var e1 = InnerUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(Exception), new Exception()); });
             Assert.IsNotNull(e1);
             Assert.AreEqual("actualException", e1.ParamName);
 
-            var e2 = TestUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(AssertFailedException), new AssertFailedException()); });
+            var e2 = InnerUtilities.Catch<ArgumentException>(() => { new ThrowsExceptionFailed(typeof(AssertFailedException), new AssertFailedException()); });
             Assert.IsNotNull(e2);
             Assert.AreEqual("actualException", e2.ParamName);
         }

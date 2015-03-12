@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Neme.UnitTestUtilities
+namespace Neme.TestUtilities
 {
     public static class Catch
     {

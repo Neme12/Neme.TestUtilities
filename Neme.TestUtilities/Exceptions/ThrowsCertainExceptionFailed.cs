@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 
-namespace Neme.UnitTestUtilities.Exceptions
+namespace Neme.TestUtilities.Exceptions
 {
     public abstract class ThrowsCertainExceptionFailed : ThrowsFailed
     {

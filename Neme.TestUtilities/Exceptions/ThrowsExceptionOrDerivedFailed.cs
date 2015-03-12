@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Neme.UnitTestUtilities.Exceptions
+namespace Neme.TestUtilities.Exceptions
 {
     public class ThrowsExceptionOrDerivedFailed : ThrowsCertainExceptionFailed
     {

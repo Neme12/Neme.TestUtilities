@@ -1,9 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Neme.UnitTestUtilities;
-using Neme.UnitTestUtilities.Exceptions;
+using Neme.TestUtilities.Tests;
 
-namespace Neme.UnitTestUtilities.Tests.Exceptions
+namespace Neme.TestUtilities.Exceptions.Tests
 {
     [TestClass]
     public class ExceptionAssertionFailedTest
@@ -16,7 +15,7 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void ExceptionNullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() =>
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() =>
                 new ExceptionAssertionFailed(null, property, expectedValue, actualValue)
             );
 
@@ -27,7 +26,7 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void PropertyNullThrows()
         {
-            var caught = TestUtilities.Catch<ArgumentNullException>(() =>
+            var caught = InnerUtilities.Catch<ArgumentNullException>(() =>
                 new ExceptionAssertionFailed(exception, null, expectedValue, actualValue)
             );
 
@@ -38,14 +37,14 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void PropertyEmptyThrows()
         {
-            var e1 = TestUtilities.Catch<ArgumentException>(() =>
+            var e1 = InnerUtilities.Catch<ArgumentException>(() =>
                 new ExceptionAssertionFailed(exception, "", expectedValue, actualValue)
             );
 
             Assert.IsNotNull(e1);
             Assert.AreEqual("propertyName", e1.ParamName);
 
-            var e2 = TestUtilities.Catch<ArgumentException>(() =>
+            var e2 = InnerUtilities.Catch<ArgumentException>(() =>
                 new ExceptionAssertionFailed(exception, " \t\n ", expectedValue, actualValue)
             );
 
@@ -56,7 +55,7 @@ namespace Neme.UnitTestUtilities.Tests.Exceptions
         [TestMethod]
         public void ValuesCannotBeSame()
         {
-            var caught = TestUtilities.Catch<ArgumentException>(() =>
+            var caught = InnerUtilities.Catch<ArgumentException>(() =>
                 new ExceptionAssertionFailed(exception, property, expectedValue, expectedValue)
             );
 
